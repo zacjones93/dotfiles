@@ -20,6 +20,7 @@ alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.p
 alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias fstart="foreman start -f Procfile.dev"
 alias rediss="redis-server /usr/local/etc/redis.conf"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # $HOME/.rbenv/bin
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
