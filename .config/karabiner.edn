@@ -3,6 +3,6 @@
         :rules [[:##left_shift :left_shift nil {:alone :delete_or_backspace}]
                 [:right_shift :right_shift nil {:alone :delete_forward}]
                 [:z :left_shift nil {:alone :z}]
-                [:caps_lock :left_control nil {:alone :delete_or_backspace}]
+                [:caps_lock :left_control nil {:alone :escape}]
                 [:slash :right_command nil {:alone :slash}]]}
 ]}
