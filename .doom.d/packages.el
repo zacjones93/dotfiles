@@ -50,3 +50,4 @@
 ;;  :recipe (:host github :repo "jethrokuan/company-org-roam"))
 
 (unpin! org-roam)
+(package! org-ref)
