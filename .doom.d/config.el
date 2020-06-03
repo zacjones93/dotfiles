@@ -168,6 +168,8 @@
     )
 
 ;; pdf tools
+;;
+
 (use-package org-pdftools
   :hook (org-load . org-pdftools-setup-link))
 
@@ -228,3 +230,14 @@
 - keywords :: ${keywords}
 \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
            :unnarrowed t))))
+
+;; tabs in emacs!
+(use-package! centaur-tabs
+  :config
+    (setq centaur-tabs-set-bar 'over
+          centaur-tabs-set-icons t
+          centaur-tabs-gray-out-icons 'buffer
+          centaur-tabs-height 24
+          centaur-tabs-set-modified-marker t
+          centaur-tabs-modified-marker "•")
+    (centaur-tabs-mode t))

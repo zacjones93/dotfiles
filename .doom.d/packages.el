@@ -51,3 +51,4 @@
 
 (unpin! org-roam)
 (package! org-ref)
+(package! centaur-tabs)
