@@ -40,7 +40,11 @@
  org-directory org_notes
  deft-directory org_notes
  org-roam-directory org_notes
- zot_bib "~/Documents/03.Resources/org-roam/masterLib.bib")
+ zot_bib "~/Documents/03.Resources/org-roam/masterLib.bib"
+ +biblio-pdf-library-dir "~/Desktop/03.Resources/org-roam/pdfs/"
+ +biblio-default-bibliography-files '("~/Desktop/03.Resources/org-roam/masterLib.bib")
+ +biblio-notes-path "~/Desktop/03.Resources/org-roam/"
+ )
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -157,7 +161,7 @@
   :config
     (setq
     ;; The WM can handle splits
-     org-noter-notes-window-location 'other-frame
+     org-noter-notes-window-location 'horizontal-split
      ;; Please stop opening frames
      org-noter-always-create-frame nil
      ;; I want to see the whole file
@@ -167,73 +171,65 @@
    )
     )
 
-;; pdf tools
-;;
-(use-package pdf-tools
-  :ensure t
-  :config
-  (pdf-tools-install))
-
-(use-package org-pdftools
-  :hook (org-load . org-pdftools-setup-link))
-
 (use-package org-noter-pdftools
   :after org-noter
   :config
   (with-eval-after-load 'pdf-annot
     (add-hook 'pdf-annot-activate-handler-functions#'org-noter-pdftools-jump-to-note)))
+
+
 ;; helm bibtex
-(setq
- bibtex-completion-notes-path org_notes
- bibtex-completion-bibliography zot_bib
- bibtex-completion-pdf-field "file"
- bibtex-completion-notes-template-multiple-files
- (concat
-  "#+TITLE: ${title}\n"
-  "#+ROAM_KEY: cite:${=key=}\n"
-  "* TODO Notes\n"
-  ":PROPERTIES:\n"
-  ":Custom_ID: ${=key=}\n"
-  ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-  ":AUTHOR: ${author-abbrev}\n"
-  ":JOURNAL: ${journaltitle}\n"
-  ":DATE: ${date}\n"
-  ":YEAR: ${year}\n"
-  ":DOI: ${doi}\n"
-  ":URL: ${url}\n"
-  ":END:\n\n"
-  )
- )
+;; (setq
+;;  bibtex-completion-notes-path org_notes
+;;  bibtex-completion-bibliography zot_bib
+;;  bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-template-multiple-files
+;;  (concat
+;;   "#+TITLE: ${title}\n"
+;;   "#+ROAM_KEY: cite:${=key=}\n"
+;;   "* TODO Notes\n"
+;;   ":PROPERTIES:\n"
+;;   ":Custom_ID: ${=key=}\n"
+;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;   ":AUTHOR: ${author-abbrev}\n"
+;;   ":JOURNAL: ${journaltitle}\n"
+;;   ":DATE: ${date}\n"
+;;   ":YEAR: ${year}\n"
+;;   ":DOI: ${doi}\n"
+;;   ":URL: ${url}\n"
+;;   ":END:\n\n"
+;;   )
+;;  )
 ;; org-ref
 ;;
-(use-package! org-ref
-    :config
-    (setq
-         org-ref-completion-library 'org-ref-ivy-cite
-         org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-         org-ref-default-bibliography (list zot_bib)
-         org-ref-bibliography-notes (concat org_notes "/bibnotes.org")
-         org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-         org-ref-notes-directory org_notes
-         org-ref-notes-function 'orb-edit-notes
-         ))
+;; (use-package! org-ref
+;;     :config
+;;     (setq
+;;          org-ref-completion-library 'org-ref-ivy-cite
+;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+;;          org-ref-default-bibliography (list zot_bib)
+;;          org-ref-bibliography-notes (concat org_notes "/bibnotes.org")
+;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+;;          org-ref-notes-directory org_notes
+;;          org-ref-notes-function 'orb-edit-notes
+;;          ))
 ;; org roam bibtext
 ;;
-(use-package org-roam-bibtex
-  :after (org-roam)
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :config
-  (setq orb-preformat-keywords
-   '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
-  (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
-           ""
-           :file-name "${slug}"
-           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
-- tags ::
-- keywords :: ${keywords}
-\n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
-           :unnarrowed t))))
+;; (use-package org-roam-bibtex
+;;   :after (org-roam)
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :config
+;;   (setq orb-preformat-keywords
+;;    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+;;   (setq orb-templates
+;;         '(("r" "ref" plain (function org-roam-capture--get-point)
+;;            ""
+;;            :file-name "${slug}"
+;;            :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+;; - tags ::
+;; - keywords :: ${keywords}
+;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+;;            :unnarrowed t))))
 
 ;; tabs in emacs!
 ;; (use-package! centaur-tabs
