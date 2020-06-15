@@ -51,4 +51,5 @@
 
 (unpin! org-roam)
 (package! org-ref)
+(package! org-pomodoro)
 (package! centaur-tabs)
