@@ -236,15 +236,15 @@
            :unnarrowed t))))
 
 ;; tabs in emacs!
-(use-package! centaur-tabs
-  :config
-    (setq centaur-tabs-set-bar 'over
-          centaur-tabs-set-icons t
-          centaur-tabs-gray-out-icons 'buffer
-          centaur-tabs-height 24
-          centaur-tabs-set-modified-marker t
-          centaur-tabs-modified-marker "•")
-    (centaur-tabs-mode t))
+;; (use-package! centaur-tabs
+;;   :config
+;;     (setq centaur-tabs-set-bar 'over
+;;           centaur-tabs-set-icons t
+;;           centaur-tabs-gray-out-icons 'buffer
+;;           centaur-tabs-height 24
+;;           centaur-tabs-set-modified-marker t
+;;           centaur-tabs-modified-marker "•")
+;;     (centaur-tabs-mode t))
 
 (use-package org-pomodoro
   :ensure t)
