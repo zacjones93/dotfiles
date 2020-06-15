@@ -41,9 +41,9 @@
  deft-directory org_notes
  org-roam-directory org_notes
  zot_bib "~/Documents/03.Resources/org-roam/masterLib.bib"
- +biblio-pdf-library-dir "~/Desktop/03.Resources/org-roam/pdfs/"
- +biblio-default-bibliography-files '("~/Desktop/03.Resources/org-roam/masterLib.bib")
- +biblio-notes-path "~/Desktop/03.Resources/org-roam/"
+ +biblio-pdf-library-dir "~/Documents/03.Resources/org-roam/pdfs/"
+ +biblio-default-bibliography-files '("~/Documents/03.Resources/org-roam/masterLib.bib")
+ +biblio-notes-path "~/Documents/03.Resources/org-roam/"
  )
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
