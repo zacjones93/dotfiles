@@ -133,9 +133,6 @@
 ;; https://www.emacswiki.org/emacs/TransposeFrame
 (require 'transpose-frame)
 
-;; auto-complete
-(use-package company-box
-  :hook (company-mode . company-box-mode))
 
 
 (after! org-roam

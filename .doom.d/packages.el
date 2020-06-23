@@ -51,6 +51,5 @@
 
 (unpin! org-roam)
 (package! org-ref)
-(package! company-box)
 (package! org-pomodoro)
 (package! centaur-tabs)
