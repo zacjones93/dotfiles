@@ -177,9 +177,41 @@
   (with-eval-after-load 'pdf-annot
     (add-hook 'pdf-annot-activate-handler-functions#'org-noter-pdftools-jump-to-note)))
 
+(sp-with-modes '(org-mode)
+    (sp-local-pair "=" "="))
 
 (use-package org-pomodoro
   :ensure t)
+
+;;My Roam Capture Templates
+  (setq org-roam-capture-templates
+    '(
+      ("d" "default" plain (function org-roam--capture-get-point)
+        "%?"
+        :file-name "${slug}"
+        :head "#+title: ${title}\n#+created: %u\n#+last_modified: %U\n#+roam_alias: \n#+roam_tags: \n"
+        :unnarrowed t)
+
+       ("b" "book" plain (function org-roam--capture-get-point)
+        "%?"
+        :file-name "${slug}"
+        :head "#+title: ${title}\n#+roam_alias: \n#+roam_tags:\n:author:\n:medium: [[file:Books.org][Book]]\n:GENRE:"
+        :unnarrowed t)
+
+       ("l" "lesson" plain (function org-roam--capture-get-point)
+        "%?"
+        :file-name "egghead lesson: ${slug}"
+        :head "#+title: egghead lesson: ${title}\n#+roam_alias: \n#+roam_tags:\"lesson\"\n:instructor:\n:medium: [[file:Lesson.org][Lesson]]\n:link:\n\n* General\n* Screen Setup\n* Lesson edits"
+        :unnarrowed t)
+
+        ("m" "meeting" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+title: ${title}\n:participants:\n* %<%m-%d-%Y  %H:%M>"
+         :unnarrowed t
+         :immediate-finish t))
+  )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -190,16 +222,29 @@
  '(custom-safe-themes
    (quote
     ("2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" default)))
- '(deft-auto-save-interval -1.0 t)
+ '(deft-auto-save-interval -1.0)
  '(deft-default-extension "org" t)
- '(deft-directory "~/Documents/03.Resources/org-roam" t)
- '(deft-recursive t t)
- '(deft-use-filter-string-for-filename t t)
+ '(deft-directory "~/Documents/03.Resources/org-roam")
+ '(deft-recursive t)
+ '(deft-use-filter-string-for-filename t)
  '(fci-rule-color "#5B6268")
  '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#51afef"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(objed-cursor-color "#ff6c6b")
+ '(org-emphasis-alist
+   (quote
+    (("*" bold)
+     ("/" italic)
+     ("_" underline)
+     ("" default verbatim)
+     ("" default verbatim)
+     ("="
+      (:foreground "black" :background "orange")
+      verbatim)
+     ("~" org-code verbatim)
+     ("+"
+      (:strike-through t)))))
  '(org-journal-date-format "%A, %d %B %Y")
  '(org-journal-date-prefix "#+TITLE: ")
  '(org-journal-dir "~/Documents/03.Resources/org-roam")
