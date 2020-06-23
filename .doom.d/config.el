@@ -133,12 +133,10 @@
 ;; https://www.emacswiki.org/emacs/TransposeFrame
 (require 'transpose-frame)
 
-;;(require 'company-org-roam)
-;;    (use-package company-org-roam
-;;      :when (featurep! :completion company)
-;;      :after org-roam
-;;      :config
-;;      (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+;; auto-complete
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 
 (after! org-roam
         (map! :leader
