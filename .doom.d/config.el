@@ -173,7 +173,10 @@
     (add-hook 'pdf-annot-activate-handler-functions#'org-noter-pdftools-jump-to-note)))
 
 (sp-with-modes '(org-mode)
-    (sp-local-pair "=" "="))
+  (sp-local-pair "=" "="))
+
+;; hide highlighting syntax in org
+(setq org-hide-emphasis-markers t)
 
 (use-package org-pomodoro
   :ensure t)
@@ -213,10 +216,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#21242b" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
+   ["#E9E9F2" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
  '(custom-safe-themes
    (quote
-    ("2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" default)))
+    ("9b01a258b57067426cc3c8155330b0381ae0d8dd41d5345b5eddac69f40d409b" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "801a567c87755fe65d0484cb2bded31a4c5bb24fd1fe0ed11e6c02254017acb2" default)))
  '(deft-auto-save-interval -1.0)
  '(deft-default-extension "org" t)
  '(deft-directory "~/Documents/03.Resources/org-roam")
@@ -235,15 +238,15 @@
      ("" default verbatim)
      ("" default verbatim)
      ("="
-      (:foreground "black" :background "orange")
+      (:foreground "black" :background "yellow")
       verbatim)
      ("~" org-code verbatim)
      ("+"
       (:strike-through t)))))
- '(org-journal-date-format "%A, %d %B %Y")
- '(org-journal-date-prefix "#+TITLE: ")
- '(org-journal-dir "~/Documents/03.Resources/org-roam")
- '(org-journal-file-format "%Y-%m-%d.org")
+ '(org-journal-date-format "%A, %d %B %Y" t)
+ '(org-journal-date-prefix "#+TITLE: " t)
+ '(org-journal-dir "~/Documents/03.Resources/org-roam" t)
+ '(org-journal-file-format "%Y-%m-%d.org" t)
  '(package-selected-packages
    (quote
     (tao-theme transpose-frame org-roam-server org-roam-bibtex org-ref org-pomodoro org-noter-pdftools org-journal cmake-ide)))
