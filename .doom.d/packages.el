@@ -50,6 +50,7 @@
 ;;  :recipe (:host github :repo "jethrokuan/company-org-roam"))
 
 (unpin! org-roam)
+(unpin! org-roam-server)
 (package! org-ref)
 (package! org-pomodoro)
 (package! centaur-tabs)
