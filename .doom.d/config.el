@@ -178,8 +178,18 @@
 ;; hide highlighting syntax in org
 (setq org-hide-emphasis-markers t)
 
+
+;; Tamato timer!
 (use-package org-pomodoro
   :ensure t)
+
+;; Remove terrible pomodoro sound
+(setq org-pomodoro-play-sounds t
+      org-pomodoro-short-break-sound-p t
+      org-pomodoro-long-break-sound-p t
+      org-pomodoro-short-break-sound (expand-file-name "/System/Library/Sounds/Glass.aiff")
+      org-pomodoro-long-break-sound (expand-file-name "/System/Library/Sounds/Glass.aiff")
+      org-pomodoro-finished-sound (expand-file-name "/System/Library/Sounds/Glass.aiff"))
 
 ;;My Roam Capture Templates
   (setq org-roam-capture-templates
